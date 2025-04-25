@@ -49,10 +49,29 @@ nav a:hover {
     padding: 5px;
     border-radius: 5px;
 }
+/*Ul e li geral*/
 
-/*Conteudo principal*/
-main section {
-    margin-top: 40px;
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #110808;
+}
+
+a:hover {
+    color: #616161;
 }
 
 main h1 {
@@ -81,29 +100,29 @@ main img {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/*Table*/
 
-/*Listas*/
-ul {
-    list-style: none;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-/*Table
-(index.html e galeria.html)
- 1- Adicionar border-collapse: collapse; (visual mais limpo)
- 2- Alterar cor de fundo dos cabeçalhos (th)
- 3 - Definir bordas
-*/
 .table {
     background-color: #d6d6d6;
-    border-collapse: collapse;
-    border-radius: 2%;
     padding: 20px;
+    margin: 20px auto ;
 }
 
 th {
     background: #ececec;
-    border-radius: 5%;
     padding: 5px 15px;
+    text-align: left;
+    width: 50%;
+}
+
+th, td {
+    width: 50%;
 }
 
 td {
@@ -123,43 +142,49 @@ td {
     display: none;
 }
 
-/*Formulários:
-(contato.html)e (gerar.html)
- 1- Tamanho dos inputs e text-area adequados.
- 2 - Ajustar margin e padding
- */
-
-/*
-body {
-    width: 100%;
-    margin: 0px;
-    padding-bottom: 30px;
-    background-color: #00010D;
-    color: #ececec;
-    font-family: "Nunito", serif;
-    font-weight: 300;
-    font-size: 16px;
-}
-*/
-
 /*Gerador*/
 #gerar {
-    width: 70vw;
-    height: 30px;
-    margin: 0 auto;
-    padding: 0 20px 2em 20px;
-    background-color: #ffffff;
+    background-color: #d6d6d6;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 60%;
+    max-width: 500px;
 }
 
 #gerador {
-    min-width: 10px;
-    height: 10px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /*Formulário*/
-form {
+
+fieldset ul {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+}
+
+fieldset li {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+fieldset a {
+    text-decoration: none;
+    color: #110808;
+}
+
+fieldset a:hover {
+    color: #d6d6d6;
+}
+
+.contacts {
     width: 70vw;
     min-width: 300px;
     max-width: 600px;
@@ -170,13 +195,6 @@ form {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.gerador {
-    width: 70vw;
-    min-width: 300px;
-    max-width: 600px;
-    height: 30px;
 }
 
 fieldset {
@@ -194,6 +212,7 @@ fieldset:last-of-type {
 label {
     display: block;
     margin: 1rem 0;
+    text-align: left;
 
   }
 
@@ -202,24 +221,24 @@ input, textarea {
     border: 1px solid  #ececec;
     color: #110808;
     margin: 10px 0 0 0;
+    padding: 10px;
     width: 100%;
     min-height: 2em;
 }
 
-input[type="submit"] {
+button[type="submit"] {
     display: block;
-    width: 60%;
+    width: auto;
+    max-width: 60%;
+    min-width: 100px;
     margin: 1em auto;
     height: 2em;
     font-size: 1.1rem;
     background-color: #ececec;
-    border-color: #d6d6d6;
+    border-color: #d6d6d683;
     min-width: 300px;
   }
 
-/*
-
-> Formulários:
-(contato.html)e (gerar.html)
- 1- Tamanho dos inputs e text-area adequados.
- 2 - Ajustar margin e padding
+  button:hover {
+    color: #979797;
+  }

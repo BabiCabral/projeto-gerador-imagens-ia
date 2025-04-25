@@ -18,16 +18,17 @@
         </nav>
     </header>
     <main>
-        <h1 id="title">Entre em contato</h1>
-        <p id="description">breve descrição.</p>
         <section>
-            <form id="contacts">
+        <h1 id="title">Entre em contato</h1>
+        </section>
+        <section>
+            <form class="contacts"  id="contacts" action="#">
                 <fieldset>
                     <ul id="social_media">
-                        <li>E-mail</li>
-                        <li>Linkedin</li>
-                        <li>GitHub</li>
-                        <li>Whatsapp</li>
+                        <li><a href="#">E-mail</a></li>
+                        <li><a href="#">Linkedin</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Whatsapp</a></li>
                     </ul>
                 </fieldset>
                 <fieldset>
@@ -35,6 +36,7 @@
                     <label id="email-label">E-mail: <input id="email" name="email" type="email" placeholder="seu@email.com" required></label>
                     <label for="mensagem">Mensagem:</label>
                     <textarea name="mensagem"  rows="3" cols="30" placeholder="Escreva aqui..."></textarea>
+                    <button id="formulario" type="submit">Enviar</button>
                 </fieldset>
         </section>
     </main>
