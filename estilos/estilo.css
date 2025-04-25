@@ -123,7 +123,11 @@ td {
     display: none;
 }
 
-/*Formulário (contato.html)*/
+/*Formulários:
+(contato.html)e (gerar.html)
+ 1- Tamanho dos inputs e text-area adequados.
+ 2 - Ajustar margin e padding
+ */
 
 /*
 body {
@@ -138,7 +142,23 @@ body {
 }
 */
 
+/*Gerador*/
+#gerar {
+    width: 70vw;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0 20px 2em 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+#gerador {
+    min-width: 10px;
+    height: 10px;
+}
+
+/*Formulário*/
 form {
     width: 70vw;
     min-width: 300px;
@@ -150,6 +170,13 @@ form {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.gerador {
+    width: 70vw;
+    min-width: 300px;
+    max-width: 600px;
+    height: 30px;
 }
 
 fieldset {
@@ -190,23 +217,9 @@ input[type="submit"] {
     min-width: 300px;
   }
 
-
-
-
 /*
-> Adicionar margin, padding;
-trabalhar com display: (block, inline ou inline block a depender do desejado)
-
-> Textar dispaly none em algum elemento
 
 > Formulários:
 (contato.html)e (gerar.html)
  1- Tamanho dos inputs e text-area adequados.
  2 - Ajustar margin e padding
-
->Tables:
-(index.html e galeria.html)
- 1- Adicionar border-collapse: collapse; (visual mais limpo)
- 2- Alterar cor de fundo dos cabeçalhos (th)
- 3 - Definir bordas
-*/
