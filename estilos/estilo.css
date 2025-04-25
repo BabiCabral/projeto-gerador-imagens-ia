@@ -61,6 +61,13 @@ main h1 {
     font-size: 36px;
 }
 
+main h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
 main p {
     font-family: "Nunito", serif;
     font-weight: 400;
@@ -72,6 +79,48 @@ main img {
     height: auto;
     border-radius: 5%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/*Listas*/
+ul {
+    list-style: none;
+}
+
+/*Table
+(index.html e galeria.html)
+ 1- Adicionar border-collapse: collapse; (visual mais limpo)
+ 2- Alterar cor de fundo dos cabeçalhos (th)
+ 3 - Definir bordas
+*/
+.table {
+    background-color: #d6d6d6;
+    border-collapse: collapse;
+    border-radius: 2%;
+    padding: 20px;
+}
+
+th {
+    background: #ececec;
+    border-radius: 5%;
+    padding: 5px 15px;
+}
+
+td {
+    font-family: "Nunito", serif;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-weight: 100;
+    margin: 1em 20px 2em 20px;
+}
+
+.functionality {
+    font-weight: bold;
+}
+
+.extra {
+    display: none;
 }
 
 /*Formulário (contato.html)*/
@@ -88,6 +137,8 @@ body {
     font-size: 16px;
 }
 */
+
+
 form {
     width: 70vw;
     min-width: 300px;
