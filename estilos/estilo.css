@@ -238,9 +238,8 @@ input, textarea {
 
 button[type="submit"] {
     display: block;
-    width: auto;
+    width: 100%;
     max-width: 60%;
-    min-width: 100px;
     margin: 1em auto;
     height: 2em;
     font-size: 1.1rem;
