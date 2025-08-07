@@ -196,7 +196,6 @@ fieldset a:hover {
 
 .contacts {
     width: 70vw;
-    min-width: 300px;
     max-width: 600px;
     height: auto;
     min-height: 300px;
@@ -233,6 +232,7 @@ input, textarea {
     margin: 10px 0 0 0;
     padding: 10px;
     width: 100%;
+    box-sizing: border-box;
     min-height: 2em;
 }
 
@@ -246,7 +246,6 @@ button[type="submit"] {
     font-size: 1.1rem;
     background-color: #ececec;
     border-color: #d6d6d683;
-    min-width: 300px;
   }
 
   button:hover {
