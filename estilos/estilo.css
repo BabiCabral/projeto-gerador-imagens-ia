@@ -106,25 +106,16 @@ main img {
 
 /*Table*/
 
-.galeria {
-    background-color: #d6d6d6;
-    padding: 20px;
-    margin: 20px auto ;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 }
 
-tr {
-    display: flex;
-    flex-direction: column;
+.table {
+    background-color: #d6d6d6;
+    padding: 20px;
+    margin: 20px auto ;
 }
 
 th {
