@@ -15,16 +15,32 @@
         border: none;
     }
 
-    a:hover {
-        display: none;
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #110808;
+        font-weight: bolder;
+    }
+
+    nav a:hover {
+        border: 2px solid #110808;
+        padding: 5px;
+        border-radius: 5px;
     }
 
     .logo {
         display: flex;
         justify-content: space-around;
         font-family: Georgia, 'Times New Roman', Times, serif;
-        margin: 0 auto;
+        margin: 0 auto 0 5px;
         font-size: 24px;
+        font-weight: bold;
+        color: #110808;
     } 
 
     .mobile-menu div {
@@ -50,7 +66,7 @@
     }
 
     .nav-list li {
-        color: #ececec;
+        color: #110808;;
         margin-left: 0;
         opacity: 0;
     }

@@ -25,10 +25,12 @@ section {
 }
 
 /*Navegação*/
+
 nav {
     border: 1px solid #110808;
     border-radius: 5px;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
