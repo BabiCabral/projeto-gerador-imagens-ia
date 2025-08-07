@@ -1,9 +1,7 @@
 @charset "utf-8";
 
-/* ========================================================================== */
 /* MEDIA QUERIES PARA TELAS MENORES (CELULAR)                                */
 /* - Breakpoint principal: max-width: 768px                                  */
-/* ========================================================================== */
 
 @media screen and (max-width: 999px) {
 
@@ -48,7 +46,7 @@
         align-items: center;
         justify-content: space-around;
         transform: translateX(100%);
-        transform: transform 0.3s ease-in;
+        transition: transform 0.3s ease-in;
     }
 
     .nav-list li {
@@ -60,33 +58,15 @@
     .nav-list.active {
         transform: translateX(0);
     }
-    /*
-    a {
-        text-decoration: none;
-        color: #110808;
-        transition: 0.3s;
+    
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
-
-    a:hover{
-        opacity: 0.7;
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 8vh;
-    }
-
-    .nav-list {
-        list-style: none;
-        display: flex;
-    }
-
-    .nav-list li {
-        letter-spacing: 3px;
-        margin-left: 32px;
-
-    }
-*/
 }
