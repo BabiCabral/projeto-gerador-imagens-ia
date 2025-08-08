@@ -1,0 +1,5 @@
+# Ignorar o arquivo de ambiente com suas chaves secretas
+.env
+
+# Ignorar a pasta do ambiente virtual
+.venv
