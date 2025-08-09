@@ -66,7 +66,15 @@ def gerar_imagem():
 
 @app.route('/galeria', methods=['GET'])
 def obter_galeria():
-    return jsonify([])
+    conn = get_db_connection()
+    imagens_do_db = conn.execute('SELECT * FROM imagens ORDER BY id DESC').fetchall()
+    conn.close()
+
+    imagens_para_json = []
+    for imagem in imagens_do_db:
+        imagens_para_json.append(dict(imagem))
+
+    return jsonify(imagens_para_json)
 
 if __name__ == '__main__':
     app.run(debug=True)
