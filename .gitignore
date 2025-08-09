@@ -3,3 +3,6 @@
 
 # Ignorar a pasta do ambiente virtual
 .venv
+
+# Ignorar o banco de dados
+backend/galeria.db
