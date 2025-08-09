@@ -53,12 +53,11 @@ def gerar_imagem():
         )
         url_imagem = resposta.data[0].url
 
-        nova_imagem = {
-            "url": url_imagem,
-            "descricao": prompt,
-            "data_criacao": datetime.now().strftime("%d/%m/%Y %H:%M")
-        }
-        galeria_de_imagens.append(nova_imagem)
+        conn = get_db_connection()
+        conn.execute('INSERT INTO imagens (url, descricao, data_criacao) VALUES (?, ?, ?)',
+                     (url_imagem, prompt, datetime.now().strftime("%d/%m/%Y %H:%M")))
+        conn.commit()
+        conn.close()
 
         return jsonify({"url": url_imagem})
 
