@@ -51,15 +51,17 @@ const geradorForm = document.getElementById('gerador');
 const inputPrompt = document.getElementById('gerar');
 const imagemGerada = document.getElementById('imagem-gerada');
 const botaoGerar = document.getElementById('gerador_button');
+const botaoBaixar = document.getElementById('botao-baixar');
 
 geradorForm.addEventListener('submit', async (evento) => {
     evento.preventDefault(); 
     
     const prompt = inputPrompt.value;
     
-    imagemGerada.src = 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2g3b2J4NmxtNzF4M3d3dGF1cjB0cGtsb3dvMG90aXF2dmtmYWp4MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/27E7h1g94XWbS8i9X6/giphy.gif';
+    imagemGerada.src = 'https://64.media.tumblr.com/bec5933eea5043acf6a37bb1394384ab/tumblr_meyfxzwXUc1rgpyeqo1_400.gif';
     imagemGerada.alt = 'Carregando...';
     botaoGerar.disabled = true;
+    botaoBaixar.disabled = true;
 
     try {
         const resposta = await fetch('http://127.0.0.1:5000/gerar_imagem', {
@@ -75,6 +77,7 @@ geradorForm.addEventListener('submit', async (evento) => {
         if (resposta.ok) {
             imagemGerada.src = dados.url;
             imagemGerada.alt = prompt;
+            botaoBaixar.disabled = false;
         } else {
             console.error('Erro ao gerar imagem:', dados.error);
             alert('Erro ao gerar imagem: ' + dados.error);
@@ -88,5 +91,21 @@ geradorForm.addEventListener('submit', async (evento) => {
         imagemGerada.alt = 'Imagem padrão';
     } finally {
         botaoGerar.disabled = false;
+    }
+});
+
+botaoBaixar.addEventListener('click', () => {
+    const imageUrl = imagemGerada.src;
+    const imageName = imagemGerada.alt || 'imagem_gerada';
+
+    if (imageUrl && imageUrl.startsWith('http')) {
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = `${imageName}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        alert('A imagem ainda não foi gerada ou a URL não é válida.');
     }
 });
