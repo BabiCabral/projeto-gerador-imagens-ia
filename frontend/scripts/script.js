@@ -50,67 +50,71 @@ mobileNavBar.init();
 
 // Lógica Gerar imagens:
 const geradorForm = document.getElementById('gerador');
-const inputPrompt = document.getElementById('gerar');
-const imagemGerada = document.getElementById('imagem-gerada');
-const botaoGerar = document.getElementById('gerador_button');
-const botaoBaixar = document.getElementById('botao-baixar');
+const corpoTabelaGaleria = document.getElementById('galeria-tabela');
 
-geradorForm.addEventListener('submit', async (evento) => {
-    evento.preventDefault(); 
-    
-    const prompt = inputPrompt.value;
-    
-    imagemGerada.src = 'https://64.media.tumblr.com/bec5933eea5043acf6a37bb1394384ab/tumblr_meyfxzwXUc1rgpyeqo1_400.gif';
-    imagemGerada.alt = 'Carregando...';
-    botaoGerar.disabled = true;
-    botaoBaixar.disabled = true;
+if (geradorForm) {
+    const inputPrompt = document.getElementById('gerar');
+    const imagemGerada = document.getElementById('imagem-gerada');
+    const botaoGerar = document.getElementById('gerador_button');
+    const botaoBaixar = document.getElementById('botao-baixar');
 
-    try {
-        const resposta = await fetch('http://127.0.0.1:5000/gerar_imagem', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ prompt: prompt })
-        });
+    geradorForm.addEventListener('submit', async (evento) => {
+        evento.preventDefault(); 
         
-        const dados = await resposta.json();
+        const prompt = inputPrompt.value;
+        
+        imagemGerada.src = 'https://64.media.tumblr.com/bec5933eea5043acf6a37bb1394384ab/tumblr_meyfxzwXUc1rgpyeqo1_400.gif';
+        imagemGerada.alt = 'Carregando...';
+        botaoGerar.disabled = true;
+        botaoBaixar.disabled = true;
 
-        if (resposta.ok) {
-            imagemGerada.src = dados.url;
-            imagemGerada.alt = prompt;
-            botaoBaixar.disabled = false;
-        } else {
-            console.error('Erro ao gerar imagem:', dados.error);
-            alert('Erro ao gerar imagem: ' + dados.error);
+        try {
+            const resposta = await fetch('http://127.0.0.1:5000/gerar_imagem', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: prompt })
+            });
+            
+            const dados = await resposta.json();
+
+            if (resposta.ok) {
+                imagemGerada.src = dados.url;
+                imagemGerada.alt = prompt;
+                botaoBaixar.disabled = false;
+            } else {
+                console.error('Erro ao gerar imagem:', dados.error);
+                alert('Erro ao gerar imagem: ' + dados.error);
+                imagemGerada.src = 'https://picsum.photos/600/400?grayscale';
+                imagemGerada.alt = 'Imagem padrão';
+            }
+        } catch (erro) {
+            console.error('Erro na conexão com o servidor:', erro);
+            alert('Erro ao conectar com o servidor. Verifique se o backend está rodando.');
             imagemGerada.src = 'https://picsum.photos/600/400?grayscale';
             imagemGerada.alt = 'Imagem padrão';
+        } finally {
+            botaoGerar.disabled = false;
         }
-    } catch (erro) {
-        console.error('Erro na conexão com o servidor:', erro);
-        alert('Erro ao conectar com o servidor. Verifique se o backend está rodando.');
-        imagemGerada.src = 'https://picsum.photos/600/400?grayscale';
-        imagemGerada.alt = 'Imagem padrão';
-    } finally {
-        botaoGerar.disabled = false;
-    }
-});
+    });
 
-botaoBaixar.addEventListener('click', () => {
-    const imageUrl = imagemGerada.src;
-    const imageName = imagemGerada.alt || 'imagem_gerada';
-
-    if (imageUrl && imageUrl.startsWith('http')) {
-        const link = document.createElement('a');
-        link.href = imageUrl;
-        link.download = `${imageName}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    } else {
-        alert('A imagem ainda não foi gerada ou a URL não é válida.');
-    }
-});
+    botaoBaixar.addEventListener('click', () => {
+        const imageUrl = imagemGerada.src;
+        const imageName = imagemGerada.alt || 'imagem_gerada';
+    
+        if (imageUrl && imageUrl.startsWith('http')) {
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.download = `${imageName}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            alert('A imagem ainda não foi gerada ou a URL não é válida.');
+        }
+    });
+}
 
 // Lógica da Galeria 
 document.addEventListener('DOMContentLoaded', () => {
