@@ -3,6 +3,7 @@ from flask_cors import CORS
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+from datetime import datetime
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -14,6 +15,8 @@ cliente = OpenAI(api_key=api_key)
 
 app = Flask(__name__)
 CORS(app)
+
+galeria_de_imagens = []
 
 @app.route('/gerar_imagem', methods=['POST'])
 def gerar_imagem():
@@ -30,10 +33,22 @@ def gerar_imagem():
             size="1024x1024"
         )
         url_imagem = resposta.data[0].url
+
+        nova_imagem = {
+            "url": url_imagem,
+            "descricao": prompt,
+            "data_criacao": datetime.now().strftime("%d/%m/%Y %H:%M")
+        }
+        galeria_de_imagens.append(nova_imagem)
+
         return jsonify({"url": url_imagem})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/galeria', methods=['GET'])
+def obter_galeria():
+    return jsonify(galeria_de_imagens)
 
 if __name__ == '__main__':
     app.run(debug=True)
