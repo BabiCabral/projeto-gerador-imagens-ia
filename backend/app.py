@@ -4,6 +4,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 from datetime import datetime
+import sqlite3
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -16,7 +17,25 @@ cliente = OpenAI(api_key=api_key)
 app = Flask(__name__)
 CORS(app)
 
-galeria_de_imagens = []
+def get_db_connection():
+    conn = sqlite3.connect('galeria.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db():
+    conn = get_db_connection()
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS imagens (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            url TEXT NOT NULL,
+            descricao TEXT NOT NULL,
+            data_criacao TEXT NOT NULL
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_db()
 
 @app.route('/gerar_imagem', methods=['POST'])
 def gerar_imagem():
@@ -48,7 +67,7 @@ def gerar_imagem():
 
 @app.route('/galeria', methods=['GET'])
 def obter_galeria():
-    return jsonify(galeria_de_imagens)
+    return jsonify([])
 
 if __name__ == '__main__':
     app.run(debug=True)
