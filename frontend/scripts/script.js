@@ -47,6 +47,8 @@ const mobileNavBar = new MobileNavBar (
 mobileNavBar.init();
 
 // Conexão com backend
+
+// Lógica Gerar imagens:
 const geradorForm = document.getElementById('gerador');
 const inputPrompt = document.getElementById('gerar');
 const imagemGerada = document.getElementById('imagem-gerada');
@@ -109,3 +111,48 @@ botaoBaixar.addEventListener('click', () => {
         alert('A imagem ainda não foi gerada ou a URL não é válida.');
     }
 });
+
+// Lógica da Galeria 
+document.addEventListener('DOMContentLoaded', () => {
+    const corpoTabelaGaleria = document.getElementById('galeria-tabela');
+    if (corpoTabelaGaleria) {
+        carregarGaleria();
+    }
+});
+
+async function carregarGaleria() {
+    const corpoTabela = document.getElementById('galeria-tabela');
+    corpoTabela.innerHTML = '<tr><td colspan="3">Carregando galeria...</td></tr>';
+
+    try {
+        const resposta = await fetch('http://127.0.0.1:5000/galeria', {
+            method: 'GET'
+        });
+
+        if (!resposta.ok) {
+            throw new Error('Falha ao carregar a galeria.');
+        }
+
+        const imagens = await resposta.json();
+        
+        corpoTabela.innerHTML = ''; 
+
+        if (imagens.length === 0) {
+            corpoTabela.innerHTML = '<tr><td colspan="3">Nenhuma imagem gerada ainda.</td></tr>';
+        } else {
+            imagens.forEach(imagem => {
+                const novaLinha = document.createElement('tr');
+                novaLinha.innerHTML = `
+                    <td><img src="${imagem.url}" alt="${imagem.descricao}" style="width: 100px;"></td>
+                    <td>${imagem.descricao}</td>
+                    <td>${imagem.data_criacao}</td>
+                `;
+                corpoTabela.appendChild(novaLinha);
+            });
+        }
+
+    } catch (erro) {
+        console.error('Erro ao carregar a galeria:', erro);
+        corpoTabela.innerHTML = `<tr><td colspan="3">Erro ao carregar a galeria: ${erro.message}</td></tr>`;
+    }
+}
