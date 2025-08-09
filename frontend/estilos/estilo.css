@@ -236,7 +236,7 @@ input, textarea {
     min-height: 2em;
 }
 
-button[type="submit"] {
+.estilo-botao {
     display: block;
     width: 100%;
     max-width: 60%;
@@ -245,8 +245,15 @@ button[type="submit"] {
     font-size: 1.1rem;
     background-color: #ececec;
     border-color: #d6d6d683;
+    cursor: pointer;
   }
 
-  button:hover {
+ .estilo-botao:hover {
     color: #979797;
   }
+
+  .estilo-botao:disabled {
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+}
