@@ -49,7 +49,7 @@ mobileNavBar.init();
 // Conexão com backend
 const geradorForm = document.getElementById('gerador');
 const inputPrompt = document.getElementById('gerar');
-const imagemGerada = document.getElementByI('imagem-gerada');
+const imagemGerada = document.getElementById('imagem-gerada');
 const botaoGerar = document.getElementById('gerador_button');
 
 geradorForm.addEventListener('submit', async (evento) => {
