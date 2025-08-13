@@ -24,3 +24,5 @@ O projeto evoluiu de um site estático para uma aplicação completa, utilizando
 - Persistência de Dados: Implementação de um banco de dados para salvar informações de maneira permanente.
 
 - Segurança: Gerenciamento seguro de chaves de API (.env e variáveis de ambiente), um ponto crucial para aplicações reais.
+
+**Nota sobre a Hospedagem:** Atualmente, a funcionalidade de geração de imagens e a galeria não operam quando o site é acessado via GitHub Pages. Isso ocorre porque o backend do projeto, responsável por processar a requisição e salvar as imagens, ainda não está hospedado em um servidor público. A chave de API da IA, um dado sensível, é armazenada com segurança no backend. Para que a aplicação funcione completamente online, de ponta a ponta, o backend precisa ser migrado para uma plataforma como Render ou Heroku, o que é o próximo passo planejado para o projeto.
